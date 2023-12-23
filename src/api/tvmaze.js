@@ -1,12 +1,11 @@
-const BASE_URL = 'https://api.tvmaze.com'
+const BASE_URL = 'https://api.tvmaze.com';
 
-const apiGet =async (queryString) => {
-    throw new Error("Something Bad Happend");
-    //  const response = await fetch(`${BASE_URL}${queryString}`);
-    //      const body = await response.json();
+const apiGet = async queryString => {
+  throw new Error('Something Bad Happend');
+  //  const response = await fetch(`${BASE_URL}${queryString}`);
+  //      const body = await response.json();
 
-    //      return body;
+  //      return body;
 };
 
-
-export const searchForShows = (query) => apiGet(`/dfgtdrhgdgr?q=${query}`)
+export const searchForShows = query => apiGet(`/dfgtdrhgdgr?q=${query}`);

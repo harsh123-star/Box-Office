@@ -1,9 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './page/Home';
 import Starred from './page/Starred';
-import MainLayout from "./components/MainLayout";
-
-
+import MainLayout from './components/MainLayout';
 
 function App() {
   return (
@@ -11,13 +9,10 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route path="/" element={<Home />} />
-          <Route path="/Starred" element={<Starred />} /></Route>
+          <Route path="/Starred" element={<Starred />} />
+        </Route>
         <Route path="*" element={<div>Not Found</div>} />
 
-
-
-
-        
         {/* <Route path="/" element={<App />}>
           <Route index element={<Home />} />
           <Route path="teams" element={<Teams />}>
@@ -33,7 +28,6 @@ function App() {
   <Route path="contact-us" element={<Contact />} /> */}
       </Routes>
     </BrowserRouter>
-
   );
 }
 
