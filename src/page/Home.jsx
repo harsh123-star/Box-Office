@@ -44,6 +44,7 @@ const Home = () => {
 
   return (
     <div>
+
       <SearchForm onSearch={onSearch} />
 
 
