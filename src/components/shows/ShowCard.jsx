@@ -1,47 +1,48 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 import styled from "styled-components";
 import { SearchCard, SearchImgWrapper } from '../common/SearchCard';
 import { StarIcon } from '../common/StarIcon'
 const ShowCard = ({ name, image, id, summary, onStarMeClick, isStarred }) => {
-    const summaryStripped = summary ? summary.split(' ').slice(0, 10).join(' ').replace(/<.+?>/g, '') + '...' : 'No description';
+  const summaryStripped = summary ? summary.split(' ').slice(0, 10).join(' ').replace(/<.+?>/g, '') + '...' : 'No description';
 
-    const starBtnRef = useRef();
+  const starBtnRef = useRef();
 
-    const handleStarClick = () => {
-        onStarMeClick(id);
-        const starBtnEl = starBtnRef.current;
+  const handleStarClick = () => {
+    onStarMeClick(id);
+    const starBtnEl = starBtnRef.current;
 
-        if (!starBtnEl) return;
+    if (!starBtnEl) return;
 
-        if (isStarred) {
-            starBtnEl.classList.remove('animate');
-        } else {
-            starBtnEl.classList.add('animate');
-        }
-
+    if (isStarred) {
+      starBtnEl.classList.remove('animate');
+    } else {
+      starBtnEl.classList.add('animate');
     }
-    return (
-        <SearchCard>
-            <SearchImgWrapper>
-                <img src={image} alt={name} />
-            </SearchImgWrapper>
 
-            <h1>{name}</h1>
-            <p>{summaryStripped}</p>
-            <ActionSection>
-                <a href={`show/${id}`} target="_blank" rel="noreferrer">Read more</a>
-                <StarBtn
-                    ref={starBtnRef}
-                    type="button"
-                    onClick={handleStarClick}
-                >
-                    <StarIcon active={isStarred} />
-                    {/* {isStarred ? 'Unstar me' : 'Star me'}*/}
-                </StarBtn>
-            </ActionSection>
+  }
+  return (
+    <SearchCard>
+      <SearchImgWrapper>
+        <img src={image} alt={name} />
+      </SearchImgWrapper>
 
-        </SearchCard>
-    );
+      <h1>{name}</h1>
+      <p>{summaryStripped}</p>
+      <ActionSection>
+        <Link to={`show/${id}`} target="_blank" rel="noreferrer">Read more</Link>
+        <StarBtn
+          ref={starBtnRef}
+          type="button"
+          onClick={handleStarClick}
+        >
+          <StarIcon active={isStarred} />
+          {/* {isStarred ? 'Unstar me' : 'Star me'}*/}
+        </StarBtn>
+      </ActionSection>
+
+    </SearchCard>
+  );
 };
 
 export default ShowCard;
